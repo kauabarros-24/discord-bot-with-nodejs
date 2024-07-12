@@ -40,6 +40,7 @@ client.on(Events.InteractionCreate, async interaction =>{
     }
     try {
         await command.execute(interaction)
+        console.log("Olá")
     } 
     catch (error) {
         console.error(error)
