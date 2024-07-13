@@ -31,7 +31,24 @@ client.once(Events.ClientReady, c => {
 client.login(TOKEN)
 
 // Listener de interações com o bot
-client.on(Events.InteractionCreate, async interaction =>{
+client.on(Events.InteractionCreate, async interaction => {
+    if (interaction.isStringSelectMenu()) {
+     try {  const selected = interaction.values[0]
+        if (selected == "javascript") {
+            await interaction.reply(`Documentação do javascript: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript`)
+        } else if (selected == "python") {
+            await interaction.reply("Documentação do python: https://docs.python.org/pt-br/3/tutorial/")
+        } else if (selected == "PHP") {
+            await interaction.reply("Documentação do PHP: https://www.php.net/manual/pt_BR/index.php")
+        }
+     }
+     catch (error) {
+        console.error("ERRO ->", error)
+     }
+
+
+    }
+
     if (!interaction.isChatInputCommand()) return
     const command = interaction.client.commands.get(interaction.commandName)
     if (!command) {
